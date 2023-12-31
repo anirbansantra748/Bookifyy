@@ -1,0 +1,19 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="row">
+  <% allBooks.forEach((book, index) => { %>
+    <div class="col-2 mt-4"> <!-- Adjust the column width as needed, e.g., col-2 for 6 books per row -->
+      <div class="card" style="width: 12rem;">
+        <img src="<%= book.image %>" class="card-img-top" alt="image">
+        <div class="card-body">
+          <h5 class="card-title"><%= book.title %></h5>
+          <a href="<%= book.link || book.upload %>" class="btn btn-primary">Read</a>
+        </div>
+      </div>
+    </div>
+
+    <% if ((index + 1) % 6 === 0) { %>
+      </div><div class="row">
+    <% } %>
+  <% }); %>
+</div>
